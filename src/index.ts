@@ -1,15 +1,17 @@
 import { html } from '@elysiajs/html';
 import { Elysia } from 'elysia';
-import { plugin } from './plugin';
-import { plugin2 } from './plugin2';
+
+const plugin = new Elysia().get('/user', ({ store }) => store.user);
+
+const plugin2 = new Elysia().get('/session', ({ store }) => store.session);
 
 const app = new Elysia()
 	.state({
 		user: {
-			'Alex' : 'Alex is a user',
+			Alex: 'Alex is a user'
 		} as Record<string, string>,
 		session: {
-			1: 'Alex',
+			1: 'Alex'
 		} as Record<number, string>
 	})
 	.use(html())
